@@ -1,0 +1,84 @@
+<div class="row">
+<div class="col-sm-6 offset-sm-3">
+<div class="jumbotron">
+  <div class="alert alert-danger" role="alert" *ngIf="failed">
+    <p>Server creation failed! Make sure all the required fields are filled in and your server is online with 'RANKATRON' in the MOTD.</p>
+  </div>
+<h3>Create a server</h3>
+  <p>To create a server at Rankatron please put <b>'RANKATRON' in your servers MOTD</b> while creating it here. You will not be able to create a server listing on Rankatron without completing this step.</p>
+<form class="form-horizontal">
+  <div class="form-group row">
+    <div class="col-sm-12">
+    <label for="serverName">Server Name</label>
+    <input type="text" class="form-control" name="serverName" [(ngModel)]="server.name" placeholder="Server name">
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-8">
+      <label for="serverAddress">Server Address</label>
+      <input type="text" class="form-control" name="serverAddress" [(ngModel)]="server.address" placeholder="Server Address">
+    </div>
+    <div class="col-sm-4">
+      <label for="serverPort">Server Port</label>
+      <input type="text" class="form-control" name="serverPort" [(ngModel)]="server.port" placeholder="Defaults to 25565">
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-12">
+    <label for="serverImage">Image</label>
+    <input type="text" class="form-control" name="serverImage" [(ngModel)]="server.image" placeholder="Provide an image to represent your server in the list">
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-12">
+    <label for="serverDesc">Description</label>
+    <textarea type="text" class="form-control" name="serverDesc" [(ngModel)]="server.description" placeholder="This description will be seen by users seeking more information about your server"></textarea>
+    </div>
+  </div>
+  <div class="form-check row">
+    <div class="col-sm-12">
+      <label class="form-check-label" for="votifier">
+        <input name="votifier" class="form-check-input" type="checkbox" [(ngModel)]="server.votifier_enabled">
+        Enable Votifier
+      </label>
+    </div>
+  </div>
+  <div class="card" *ngIf="server.votifier_enabled">
+    <h4 class="card-title">Votifier Settings</h4>
+    <div class="form-group row">
+      <div class="col-sm-8">
+      <label for="votifierAddress">Votifier Address</label>
+      <input type="text" class="form-control" name="votifierAddress" [(ngModel)]="server.votifier_address" placeholder="Votifier Address">
+      </div>
+      <div class="col-sm-4">
+        <label for="votifierPort">Votifier Port</label>
+        <input type="text" class="form-control" name="votifierPort" [(ngModel)]="server.votifier_port" placeholder="Votifier Port">
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-12">
+        <label for="votifierPubkey">Public Key</label>
+        <textarea type="text" class="form-control" name="votifierPubkey" [(ngModel)]="server.votifier_pubkey" placeholder="The Public Key for your votifier listener"></textarea>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-6">
+        <button class="btn">Test Connection</button>
+      </div>
+    </div>
+  </div>
+  <div class="form-check row">
+    <div class="col-sm-12">
+      <label class="form-check-label" for="hidden">
+        <input name="hidden" class="form-check-input" type="checkbox" [(ngModel)]="server.hidden">
+        Hide this server
+      </label>
+    </div>
+  </div>
+  <div class="form-group row">
+    <button class="btn" (click)="create()">Create!</button>
+  </div>
+</form>
+</div>
+</div>
+</div>

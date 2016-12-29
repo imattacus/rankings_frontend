@@ -1,0 +1,16 @@
+<div *ngIf="servers">
+<table class="table table-hover">
+  <thead class="thead-inverse">
+    <tr>
+      <th>Rank</th>
+      <th>Name</th>
+      <th>Server</th>
+      <th>Players</th>
+      <th>Votes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr app-rank-entry *ngFor="let server of servers" [server]="server" [class.table-danger]="!server.online" (click)="goToDetail(server)"></tr>
+  </tbody>
+</table>
+</div>
